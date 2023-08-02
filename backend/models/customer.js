@@ -11,7 +11,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/Gowshick")
 const newSchema=new mongoose.Schema({
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     password:{
         type:String,
