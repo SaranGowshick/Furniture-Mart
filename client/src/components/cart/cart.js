@@ -8,7 +8,6 @@ const api_base="http://localhost:3001";
 
 function Cart(){
     const[furniture,setFurniture]=useState([]);
-    const [newimage, setImage] = useState(null)
     // async function furniture() {
     //     try{
     //         await axios.get(api_base+'/cart').then(res => res.json()).then(data => console.log(data)).catch(err=>console.log(err))

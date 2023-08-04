@@ -43,7 +43,7 @@ function Admin(){
     return(
         <div className="admin">
             <h1>Admin</h1>
-            <form action="POST"enctype="multipart/form-data">
+            <form action="POST" encType="multipart/form-data">
                 <input type="text" placeholder="Material" name="material"onChange={(e) => {setMaterial(e.target.value)}}/>
                 <input type="text" placeholder="Enter Density in kiloGrams" name="amount"onChange={(e) => {setAmount(e.target.value)}}/>
                 <input

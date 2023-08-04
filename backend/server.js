@@ -18,7 +18,7 @@ app.use("/images", express.static(path.join(__dirname,"images")));
 
 
 app.get("/",cors(),(req,res)=>{
-
+  res.send("Welcome to the Furniture-Mart API");
 })
 
   
@@ -51,29 +51,28 @@ app.post("/login",async(req,res)=>{
 
 
 app.post("/signup",async(req,res)=>{
-    const{email,password}=req.body
+    const{username,contact,email,password}=req.body
     const encryptedPassword = await bcrypt.hash(password,10);
 
     const data={
+        username:username,
+        contact:contact,
         email:email,
         password:encryptedPassword
     }
 
     try{
-        const check=await collection.findOne({email:email})
-
-        if(check){
-            res.json("exist")
+        const check=await collection.findOne({username:username})
+        if (check) {
+          res.json("exist");
+        } else {
+          await collection.insertMany([data]);
+          res.json("notexist");
         }
-        else{
-            res.json("notexist")
-            await collection.insertMany([data])
-        }
+      } catch (e) {
+        res.json("fail");
+      }
 
-    }
-    catch(e){
-        res.json("fail")
-    }
 
 })
 
